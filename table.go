@@ -385,3 +385,18 @@ func (tb *LTable) Next(key LValue) (LValue, LValue) {
 	}
 	return LNil, LNil
 }
+
+func (tb *LTable)IsArray() bool {
+	if len(tb.strdict) > 0 {
+		return false
+	}
+	if  len(tb.dict) > 0 {
+		return false
+	}
+	for _,v:=range tb.array {
+		if v == LNil{
+			return false
+		}
+	}
+	return true
+}
